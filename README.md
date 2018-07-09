@@ -9,6 +9,7 @@ Wolke
 - Disqus
 - Social Share (Hatena Bookmark, Twitter, Facebook, Google+, Pocket, LINE)
 - Lazy Loading Images
+- Atom Feed
 
 ### Installation
 ```
@@ -17,7 +18,7 @@ git submodule add https://github.com/39e/hugo-wolke themes/wolke
 ```
 
 ## `config.toml` example
-```
+```toml
 baseurl = "https://example.com/"
 title = "SiteTitle"
 theme = "wolke"
@@ -40,6 +41,23 @@ github = "https://github.com/XXXX"
 [outputs]
 page = ["HTML", "AMP"] # if you want AMP enable.
 ```
+
+### Atom Feed の有効化
+```toml
+[mediaTypes]
+[mediaTypes."application/atom"]
+suffix = "xml"
+
+[outputFormats.Atom]
+mediaType = "application/atom"
+baseName = "atom" # generated file = <baseName>.<mediaType."application/atom".suffix> = atom.xml
+isPlainText = false
+
+[outputs]
+home = ["HTML", "RSS", "ATOM"] # default = ["HTML", "RSS"]
+```
+
+上記の内容を追加する必要があります
 
 ## shortcode
 一部 shortcode は公式のものを使用しています。
