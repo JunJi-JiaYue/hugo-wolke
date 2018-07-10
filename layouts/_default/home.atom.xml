@@ -1,6 +1,6 @@
 <feed xmlns='http://www.w3.org/2005/Atom' xml:lang='{{ .Site.LanguageCode }}'>
 	<title>{{ with .Title }}{{ if ne . $.Site.Title }}{{.}} on {{ end }}{{ end }}{{ .Site.Title }}</title>
-	<updated>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</updated>
+	<updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
 	<link href='{{ .Permalink }}' />
 	{{ with .OutputFormats.Get "atom" }}
 	<link rel="self" href="{{ .Permalink }}" type="{{ .MediaType.Type }}+{{ .MediaType.Suffix }}" />
@@ -26,7 +26,7 @@
 			<published>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</published>
 			<updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
 			<id>{{ .UniqueID }}</id>
-			<summary><![CDATA[{{ .Summary }}]]></summary>
+			<summary>{{ .Summary }}</summary>
 		</entry>
 	{{ end }}
 
