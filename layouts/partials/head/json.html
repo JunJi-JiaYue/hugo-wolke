@@ -8,7 +8,7 @@
 	"headline": "{{ .Title }} - {{ .Site.Title }}",
 	"image": {
 		"@type": "ImageObject",
-		"url": "{{ .Site.BaseURL }}{{ .Params.thumbnail | default "images/default.png" }}",
+		"url": "{{ (apply .Params.images "absURL" ".") | default ("img/thumb.png" | absURL) }}",
 		"height": 800,
 		"width": 800
 	},
@@ -23,10 +23,10 @@
 		"name": "{{ .Site.Title }}",
 		"logo": {
 			"@type": "ImageObject",
-			"url": "{{ .Site.BaseURL }}images/logo.png",
+			"url": "{{ "img/thumb.png" | absURL }}",
 			"width": 600,
 			"height": 60
 		}
 	},
-	"description": "{{ .Description | default .Summary }}"
+	"description": "{{ .Description | default (plainify .Summary) }}"
 }</script>
