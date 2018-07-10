@@ -9,7 +9,7 @@
 				<li><i class="fas fa-bookmark" aria-hidden="true"></i>{{ . | upper }}</li>
 {{ end }}
 			</ul>
-			<div class="summary">{{ plainify .Summary | safeHTML }}</div>
+			<div class="summary">{{ .Description | default (plainify .Summary) }}</div>
 		</div>
 	</a>
 </article>
