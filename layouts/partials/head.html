@@ -1,8 +1,56 @@
+{{- define "description" -}}
+	{{- with .Description -}}
+		{{- . -}}
+	{{- else -}}
+		{{- if .IsPage -}}
+			{{- .Summary -}}
+		{{- else -}}
+			{{- with .Site.Params.description -}}
+				{{- . -}}
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+{{- end -}}
 <meta name="theme-color" content="#263238">
 <meta name="generator" content="Hugo {{ .Hugo.Version }}">
-{{ range .AlternativeOutputFormats -}}
+{{ range .AlternativeOutputFormats }}{{ if ne .Rel "canonical" -}}
 <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title | safeHTML }}">
+{{ end }}{{ end -}}
+{{- /* og */ -}}
+<meta name="description" content="{{ template "description" . }}">
+<meta property="og:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ ( .Params.thumbnail | default "img/thumb.png" ) | absURL }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ template "description" . }}">
+<meta property="og:locale" content="{{ .Site.LanguageCode | default "en" }}">
+<meta name="twitter:site" content="{{ .Site.Title }}">
+<meta name="twitter:title" content="{{ .Title }} - {{ .Site.Title }}">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:description" content="{{ template "description" . }}">
+{{ with .Site.Params.author.twitter -}}
+<meta name="twitter:creator" content="@{{ . }}"/>
 {{ end -}}
-{{ partial "head/ogp.html" . }}
+{{- with $.Params.images -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
+{{ else -}}
+	{{- $images := $.Resources.ByType "image" -}}
+	{{- $featured := $images.GetMatch "*feature*" -}}
+	{{- $featured := cond (ne $featured nil) $featured ($images.GetMatch "{*cover*,*thumbnail*}") -}}
+{{- with $featured -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ $featured.Permalink }}"/>
+{{- else -}}
+{{- with $.Site.Params.images -}}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
+{{ else -}}
+<meta name="twitter:card" content="summary"/>
+{{- end -}}
+{{- end -}}
+{{- end }}
+{{- /* icon */ -}}
 <link rel="icon" href="{{ "img/icon.png" | relURL }}">
 <link rel="apple-touch-icon" href="{{ "img/icon.png" | relURL }}">

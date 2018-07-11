@@ -1,7 +1,7 @@
 <aside class="l-sidebar">
 	<div class="sections sidebar">
-		{{ partial "sidebar/author.html" . }}
-		{{ partial "sidebar/tags.html" . }}
-		{{ partial "sidebar/latests.html" . }}
+{{ with .Site.Params.author }}{{ partial "sidebar/author.html" . }}{{ end }}
+{{ with .Site.Taxonomies.tags }}{{ partial "sidebar/tags.html" . }}{{ end }}
+{{ partial "sidebar/latests.html" . }}
 	</div>
 </aside>

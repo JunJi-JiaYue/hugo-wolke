@@ -34,9 +34,9 @@ dateformat = "Jan 2, 2006" # Optional
 name = "John Doe"
 thumbnail = "img/author.png"
 description = "This is author description."
-facebook = "https://www.facebook.com/XXXX"
-twitter = "https://twitter.com/XXXX"
-github = "https://github.com/XXXX"
+facebook = "XXXX"
+twitter = "XXXX"
+github = "XXXX"
 
 [outputs]
 page = ["HTML", "AMP"] # if you want AMP enable.
