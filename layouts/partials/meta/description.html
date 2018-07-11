@@ -1,5 +1,0 @@
-{{- if .IsPage -}}
-	{{- .Description | default (plainify .Summary) -}}
-{{- else -}}
-	{{- .Site.Params.description -}}
-{{- end -}}

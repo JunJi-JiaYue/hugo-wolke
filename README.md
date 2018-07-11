@@ -1,6 +1,6 @@
 Wolke
 ===
-このテーマは [Re Robust](https://github.com/39e/hugo-rerobust) をベースに作成しました。  
+This theme was created based on [Re Robust](https://github.com/39e/hugo-rerobust).
 
 ## Features
 - Responsive design
@@ -85,7 +85,6 @@ home = ["HTML", "RSS", "ATOM"] # default = ["HTML", "RSS"]
 ```
 
 ## Social Share
-シェアボタンのURLを更新し、非表示を可能です。
 各シェアボタンを非表示するには以下のようにしてください。
 
 ```toml
