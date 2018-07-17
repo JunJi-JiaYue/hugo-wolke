@@ -45,11 +45,11 @@ page = ["HTML", "AMP"] # if you want AMP enable.
 ### Atom Feed の有効化
 ```toml
 [mediaTypes]
-[mediaTypes."application/atom"]
-suffix = "xml"
+[mediaTypes."application/atom+xml"]
+suffixs = ["xml"]
 
 [outputFormats.Atom]
-mediaType = "application/atom"
+mediaType = "application/atom+xml"
 baseName = "atom" # generated file = <baseName>.<mediaType."application/atom".suffix> = atom.xml
 isPlainText = false
 
