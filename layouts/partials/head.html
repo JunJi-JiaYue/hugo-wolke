@@ -14,7 +14,7 @@
 <meta name="theme-color" content="#263238">
 <meta name="generator" content="Hugo {{ .Hugo.Version }}">
 {{ range .AlternativeOutputFormats }}{{ if ne .Rel "canonical" -}}
-<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title | safeHTML }}">
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}" title="{{ $.Site.Title | safeHTML }}">
 {{ end }}{{ end -}}
 {{- /* og */ -}}
 <meta name="description" content="{{ template "description" . }}">
@@ -30,26 +30,14 @@
 <meta name="twitter:url" content="{{ .Permalink }}">
 <meta name="twitter:description" content="{{ template "description" . }}">
 {{ with .Site.Params.author.twitter -}}
-<meta name="twitter:creator" content="@{{ . }}"/>
+<meta name="twitter:creator" content="@{{ . }}">
 {{ end -}}
-{{- with $.Params.images -}}
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
+{{- with .Params.thumbnail -}}
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="{{ index . 0 | absURL }}">
 {{ else -}}
-	{{- $images := $.Resources.ByType "image" -}}
-	{{- $featured := $images.GetMatch "*feature*" -}}
-	{{- $featured := cond (ne $featured nil) $featured ($images.GetMatch "{*cover*,*thumbnail*}") -}}
-{{- with $featured -}}
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="{{ $featured.Permalink }}"/>
-{{- else -}}
-{{- with $.Site.Params.images -}}
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
-{{ else -}}
-<meta name="twitter:card" content="summary"/>
-{{- end -}}
-{{- end -}}
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="{{ "img/thumb.png" | absURL }}">
 {{- end }}
 {{- /* icon */ -}}
 <link rel="icon" href="{{ "img/icon.png" | relURL }}">
