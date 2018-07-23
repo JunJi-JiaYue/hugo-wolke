@@ -28,11 +28,22 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<style amp-custom>
-{{ replaceRE " +" " " (replaceRE "\n" "" (partial "styles.css" .)) | safeCSS }}
-{{ if (fileExists "custom.css") }}
-{{ replaceRE " +" " " (replaceRE "\n" "" (readFile "/custom.css")) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/reset.css" .)) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/main.css" .)) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/single.css" .)) | safeCSS }}
+{{ if .Site.Params.socialShare | default true }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/share.css" .)) | safeCSS }}
+{{ end }}
+{{ if .Params.toc }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/toc.css" .)) | safeCSS }}
+{{ end }}
+{{ if .Page.HasShortcode "img" }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/img.amp.css" .)) | safeCSS }}
 {{ end }}
 .l-container { max-width: 40rem; margin: 0 auto; }
+{{ if (fileExists "custom.css") }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (readFile "/custom.css")) | safeCSS }}
+{{ end }}
 	</style>
 </head>
 <body>
