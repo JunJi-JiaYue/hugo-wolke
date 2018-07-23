@@ -12,9 +12,27 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosansjapanese.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<style>
-{{ replaceRE " +" " " (replaceRE "\n" "" (partial "css/main.css" .)) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/reset.css" .)) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/main.css" .)) | safeCSS }}
+{{ if .Site.Params.author }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/author.css" .)) | safeCSS }}
+{{ end }}
+{{ if .IsNode }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/pagination.css" .)) | safeCSS }}
+{{ else }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/crumb.css" .)) | safeCSS }}
+{{ if .Site.Params.socialShare | default true }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/share.css" .)) | safeCSS }}
+{{ end }}
+{{ if .Params.toc }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/toc.css" .)) | safeCSS }}
+{{ end }}
+{{ if .Page.HasShortcode "img" }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/img.css" .)) | safeCSS }}
+{{ end }}
+{{ end }}
 {{ if (fileExists "custom.css") }}
-{{ replaceRE " +" " " (replaceRE "\n" "" (readFile "/custom.css")) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (readFile "/custom.css")) | safeCSS }}
 {{ end }}
 	</style>
 {{ if and .Site.GoogleAnalytics (not .Site.IsServer) }}
