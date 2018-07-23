@@ -423,15 +423,6 @@ section.footer > header a {
 	line-height: 1.5rem;
 }
 
-.adj article.lism {
-	margin-bottom: 1rem;
-}
-
-.adj header {
-	font-weight: 700;
-	font-size: .8rem;
-}
-
 .thumb {
 	background-image: url({{ "img/thumb.png" | relURL }});
 	background-size: cover;

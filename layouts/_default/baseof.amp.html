@@ -30,7 +30,7 @@
 	<style amp-custom>
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/reset.css" .)) | safeCSS }}
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/main.css" .)) | safeCSS }}
-{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/crumb.css" .)) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/single.css" .)) | safeCSS }}
 {{ if .Site.Params.socialShare | default true }}
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/share.css" .)) | safeCSS }}
 {{ end }}
