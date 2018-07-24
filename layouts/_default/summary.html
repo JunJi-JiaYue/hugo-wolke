@@ -24,7 +24,9 @@
 {{ end }}
 	<div class="article-body">{{ .Content }}</div>
 	<footer class="article-footer">
+{{ if .Site.Params.socialShare | default true }}
 {{ partial "share.html" . }}
+{{ end }}
 {{ $params := .Params }}
 	{{ range $key, $value := $.Site.Taxonomies }}
 		{{ if isset $params $key }}

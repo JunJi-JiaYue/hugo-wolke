@@ -16,7 +16,9 @@
 			</li>
 			{{ end }}
 		</ul>
+	{{ if gt .Paginator.TotalPages 1 }}
 		{{ partial "pagination.html" . }}
+	{{ end }}
 	</div>
 	<div class="mcol c4">
 		{{ partial "sidebar.html" . }}

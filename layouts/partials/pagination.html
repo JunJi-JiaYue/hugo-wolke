@@ -1,4 +1,3 @@
-{{ if gt .Paginator.TotalPages 1 }}
 <nav class="paging">
 	{{ if .Paginator.HasPrev }}
 	<a href="{{ .Paginator.Prev.URL }}" rel="prev">Prev</a>
@@ -8,4 +7,3 @@
 	<a href="{{ .Paginator.Next.URL }}" rel="next">Next</a>
 	{{ end }}
 </nav>
-{{ end }}
