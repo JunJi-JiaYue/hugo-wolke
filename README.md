@@ -109,3 +109,12 @@ socialShareLine = false
 [Params]
 socialShare = false
 ```
+
+特定のページのみシェアボタンを非表示にするには以下のようにすることで可能です。
+
+- TOML Front-matter
+```md
++++
+socialShare = false
++++
+```
