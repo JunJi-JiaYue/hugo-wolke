@@ -31,7 +31,7 @@
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/reset.css" .)) | safeCSS }}
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/main.css" .)) | safeCSS }}
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/single.css" .)) | safeCSS }}
-{{ if .Site.Params.socialShare | default true }}
+{{ if and (.Site.Params.socialShare | default true) (.Params.socialShare | default true) }}
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/share.css" .)) | safeCSS }}
 {{ end }}
 {{ if .Params.toc }}

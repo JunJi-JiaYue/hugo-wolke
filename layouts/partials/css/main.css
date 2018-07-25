@@ -4,24 +4,12 @@ aside {
 }
 
 main { padding: 1rem 0 3rem 0; }
-aside.h { padding: 3rem 0; }
-
-main.f,
-aside.f {
-	background-color: #333;
-	border-top: 2px dashed #fff;
-	border-bottom: 2px dashed #fff;
-}
 
 .l-container {
 	position: relative;
 	max-width: 68rem;
 	margin: 0 auto;
 	padding: 0 1rem;
-}
-
-.l-container.thin {
-	max-width: 44rem;
 }
 
 .l-header {
