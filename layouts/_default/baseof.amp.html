@@ -41,9 +41,7 @@
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/img.amp.css" .)) | safeCSS }}
 {{ end }}
 .l-container { max-width: 40rem; margin: 0 auto; }
-{{ if (fileExists "custom.css") }}
-{{ replaceRE "\t" "" (replaceRE "\n" "" (readFile "/custom.css")) | safeCSS }}
-{{ end }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/custom.css")) | safeCSS }}
 	</style>
 </head>
 <body>
