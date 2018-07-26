@@ -31,7 +31,7 @@
 {{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/img.css" .)) | safeCSS }}
 {{ end }}
 {{ end }}
-{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/custom.css")) | safeCSS }}
+{{ replaceRE "\t" "" (replaceRE "\n" "" (partial "css/custom.css" .)) | safeCSS }}
 	</style>
 {{ if and .Site.GoogleAnalytics (not .Site.IsServer) }}
 <script async src='https://www.google-analytics.com/analytics.js'></script>
